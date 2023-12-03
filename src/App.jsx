@@ -11,6 +11,7 @@ import Tshirt from "./components/Categories-pages/Tshirt";
 import Jeans from "./components/Categories-pages/Jeans";
 import ProductPage, { CartContext } from "./pages/ProductPage";
 import { useEffect, useState } from "react";
+import User from "./components/Authentication/User"
 
 function App() {
   const [cartItem, setCartItem] = useState([]);
@@ -48,6 +49,7 @@ function App() {
           <Route path="jeans" element={<Jeans />} />
         </Route>
         <Route path="categories/product/:id" element={<ProductPage />} />
+        <Route path="/user" element={<User/>}/>
       </Routes>
     </CartContext.Provider>
   );

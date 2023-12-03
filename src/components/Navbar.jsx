@@ -6,7 +6,8 @@ import { useContext, useState } from "react";
 import CartWithItems from "./CartWithItems";
 import EmptyCart from "./EmptyCart";
 import { CartContext } from "../pages/ProductPage";
-import { IconMenu2, IconShoppingCart, IconX } from "@tabler/icons-react";
+import { IconMenu2, IconShoppingCart, IconX, IconUser } from "@tabler/icons-react";
+
 
 function Navbar() {
   const [sticky, setSticky] = useState(false);
@@ -46,9 +47,7 @@ function Navbar() {
           <Link onClick={() => setMobileNav(!mobileNav)} to="/categories/all">
             categories
           </Link>
-          <Link onClick={() => setMobileNav(!mobileNav)} to="/categories/lamps">
-            Shirt
-          </Link>
+         
           <Link
             onClick={() => setMobileNav(!mobileNav)}
             to="/categories/product/19"
@@ -103,6 +102,10 @@ function Navbar() {
               >
                 product page
               </Link>
+              {/* User Authentication */}
+             <Link to="/user">
+             < IconUser/>
+             </Link>
               <i
                 data-array-length={cartItem.length}
                 onClick={openCart}
@@ -112,6 +115,7 @@ function Navbar() {
               >
                 <IconShoppingCart />
               </i>
+             
             </div>
             <div className="hamburger-menu">
               <i
