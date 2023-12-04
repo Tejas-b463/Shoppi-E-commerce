@@ -15,7 +15,7 @@ const LoginSignup = () => {
 
   const handlButtonClick = () => {
          
-      const msg =  checkValidData(email.current.value, password.current.value, name.current.value);
+      const msg =  checkValidData(email.current?.value, password.current?.value, name.current?.value);
      setErrorMessage(msg);
   }
 
