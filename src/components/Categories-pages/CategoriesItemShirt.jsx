@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { items } from "../AllData";
 
+
+
 function CategoriesItem() {
   const filteredItems = items.filter((item) => item.category === "shirt");
   return (

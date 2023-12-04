@@ -54,6 +54,11 @@ function Navbar() {
           >
             product page
           </Link>
+          <Link
+          onClick={()=> setMobileNav(!mobileNav)}
+           to="/user">
+             < IconUser/>
+             </Link>
         </div>
       </div>
 
@@ -71,7 +76,6 @@ function Navbar() {
           </h2>
           <IconX onClick={openCart} />
         </div>
-
         <div className="cart-body">
           {cartItem.length < 1 ? (
             <EmptyCart openCart={openCart} />
@@ -80,7 +84,6 @@ function Navbar() {
           )}
         </div>
       </div>
-
       <nav className="navbar">
         <div className="container">
           <div className={`nav-container ${sticky ? "cont-sticky" : ""}`}>
