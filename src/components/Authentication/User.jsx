@@ -3,8 +3,9 @@ import "./User.css"
 import LoginSignup from './LoginSignup'
 const User = () => {
   return (
+   
     <div>
-        <LoginSignup/>
+          <LoginSignup/>
     </div>
   )
 }

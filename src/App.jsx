@@ -12,8 +12,14 @@ import Jeans from "./components/Categories-pages/Jeans";
 import ProductPage, { CartContext } from "./pages/ProductPage";
 import { useEffect, useState } from "react";
 import User from "./components/Authentication/User"
+import {  useDispatch } from "react-redux";
+import {  onAuthStateChanged } from "firebase/auth";
+import {auth} from "./utils/firebase"
+import { addUser, removeUser } from "./utils/userSlice";
 
 function App() {
+  const dispatch = useDispatch();
+ 
   const [cartItem, setCartItem] = useState([]);
 
   const addToCart = (item) => {
@@ -34,7 +40,21 @@ function App() {
     localStorage.setItem("cartItem", json);
   }, [cartItem]);
 
+  useEffect(()=>{
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const {uid,email,displayName} = user;
+        dispatch(addUser({uid:uid, email:email, displayName:displayName}));
+       
+      } else {
+       dispatch(removeUser());
+      }
+    });
+    
+  },[])
+
   return (
+  
     <CartContext.Provider value={{ cartItem, addToCart, setCartItem }}>
       <Navbar />
       <Routes>
@@ -52,6 +72,7 @@ function App() {
         <Route path="/user" element={<User/>}/>
       </Routes>
     </CartContext.Provider>
+    
   );
 }
 
